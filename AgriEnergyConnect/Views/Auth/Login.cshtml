@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white text-center py-3">
+                    <h4><i class="fas fa-sign-in-alt me-2"></i>Login to Agri-Energy Connect</h4>
+                </div>
+                <div class="card-body p-4">
+                    <ul class="nav nav-tabs nav-justified mb-4" id="loginTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="farmer-tab" data-bs-toggle="tab" data-bs-target="#farmer-login" type="button" role="tab">
+                                <i class="fas fa-tractor me-2"></i>Farmer Login
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="employee-tab" data-bs-toggle="tab" data-bs-target="#employee-login" type="button" role="tab">
+                                <i class="fas fa-user-tie me-2"></i>Employee Login
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="farmer-login" role="tabpanel">
+                            <form asp-action="FarmerLogin" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label">Farmer ID/Email</label>
+                                    <input type="text" class="form-control" name="email" placeholder="farmers@agrienergyconnect.com" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" name="password" required>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberFarmer">
+                                    <label class="form-check-label" for="rememberFarmer">Remember me</label>
+                                    <a href="#" class="float-end">Forgot password?</a>
+                                </div>
+                                <button type="submit" class="btn btn-success w-100 py-2">
+                                    <i class="fas fa-sign-in-alt me-2"></i>Login as Farmer
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane fade" id="employee-login" role="tabpanel">
+                            <form asp-action="EmployeeLogin" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label">Employee ID/Email</label>
+                                    <input type="text" class="form-control" name="email" placeholder="employees@agrienergyconnect.com" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" name="password" required>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberEmployee">
+                                    <label class="form-check-label" for="rememberEmployee">Remember me</label>
+                                    <a href="#" class="float-end">Forgot password?</a>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 py-2">
+                                    <i class="fas fa-sign-in-alt me-2"></i>Login as Employee
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <small>Don't have an account? <a asp-controller="Auth" asp-action="Register">Register here</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .nav-tabs .nav-link {
+            color: #495057;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+            .nav-tabs .nav-link.active {
+                color: #198754;
+                border-bottom: 3px solid #198754;
+            }
+
+        .tab-content {
+            padding-top: 1rem;
+        }
+    </style>
+}

@@ -1,0 +1,212 @@
+﻿@{
+    ViewData["Title"] = "Sustainable Farming Hub";
+}
+
+<!-- All content in one file initially -->
+<section class="hero">
+    <h1>@ViewData["Title"]</h1>
+</section>
+
+<div class="container">
+    <!-- Practice Cards -->
+    <div class="row">
+        <div class="col-md-4">
+            <!-- Card content directly here -->
+        </div>
+    </div>
+
+    <!-- Success Stories -->
+    <section class="success-stories">
+        <!-- Content here -->
+    </section>
+</div>
+
+<style>
+    /* CSS directly in the view initially */
+    .hero {
+        background: var(--success);
+    }
+</style>
+
+@{
+    ViewData["Title"] = "Sustainable Farming Hub";
+}
+
+<!-- Hero Section -->
+<section class="sustainable-hero text-center py-5 mb-5">
+    <div class="container">
+        <h1 class="display-4 text-success mb-3">
+            <i class="fas fa-leaf me-2"></i>@ViewData["Title"]
+        </h1>
+        <p class="lead">Discover and share eco-friendly farming practices</p>
+        <div class="search-bar mt-4 mx-auto" style="max-width: 600px;">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search techniques, tools, or experts...">
+                <button class="btn btn-success" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Practices Section -->
+<div class="container py-3">
+    <div class="row g-4 mb-5">
+        <!-- Water Conservation -->
+        <div class="col-md-4">
+            <div class="card h-100 border-success shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-tint fa-3x text-success mb-3"></i>
+                    <h3>Water Conservation</h3>
+                    <p>Smart irrigation and rainwater harvesting techniques</p>
+                    <ul class="text-start ps-3 mb-3">
+                        <li>Drip irrigation systems</li>
+                        <li>Soil moisture monitoring</li>
+                        <li>Greywater reuse</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-success">Explore Resources</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Soil Health -->
+        <div class="col-md-4">
+            <div class="card h-100 border-success shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-seedling fa-3x text-success mb-3"></i>
+                    <h3>Soil Health</h3>
+                    <p>Regenerative practices for fertile land</p>
+                    <ul class="text-start ps-3 mb-3">
+                        <li>Composting techniques</li>
+                        <li>Cover cropping</li>
+                        <li>No-till farming</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-success">Learn Methods</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Organic Farming -->
+        <div class="col-md-4">
+            <div class="card h-100 border-success shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-recycle fa-3x text-success mb-3"></i>
+                    <h3>Organic Farming</h3>
+                    <p>Chemical-free pest and weed control</p>
+                    <ul class="text-start ps-3 mb-3">
+                        <li>Companion planting</li>
+                        <li>Natural pesticides</li>
+                        <li>Pollinator habitats</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-success">View Guides</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Farmer Best Practices -->
+    <section class="mb-5">
+        <h2 class="text-center mb-4 border-bottom pb-2">
+            <i class="fas fa-hands-helping text-success me-2"></i>Farmer-Shared Best Practices
+        </h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card border-success h-100">
+                    <div class="card-header bg-success text-white">
+                        <h3><i class="fas fa-tractor me-2"></i>Farming Techniques</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h5>Crop Rotation Strategies</h5>
+                                <p class="mb-1">"Rotating legumes with cereals improved my yield by 30%" - Raj, Punjab</p>
+                                <small class="text-muted">3 days ago | 14 comments</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h5>Drip Irrigation Setup</h5>
+                                <p class="mb-1">Step-by-step guide to DIY drip systems</p>
+                                <small class="text-muted">1 week ago | 22 comments</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-success h-100">
+                    <div class="card-header bg-success text-white">
+                        <h3><i class="fas fa-seedling me-2"></i>Soil Health</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h5>Compost Tea Recipes</h5>
+                                <p class="mb-1">"Boosted microbial activity in my fields" - Priya, TN</p>
+                                <small class="text-muted">5 days ago | 18 comments</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h5>Cover Crop Selection</h5>
+                                <p class="mb-1">Regional guide for moisture retention</p>
+                                <small class="text-muted">2 weeks ago | 31 comments</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="mb-5">
+        <h2 class="text-center mb-4 border-bottom pb-2">
+            <i class="fas fa-star text-success me-2"></i>Success Stories
+        </h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="/images/farmer1.jpg" class="card-img-top" alt="Success story" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5>Water Conservation</h5>
+                        <p>"Saved 40% water with drip irrigation"</p>
+                        <a href="#" class="btn btn-sm btn-outline-success">Read Story</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Add 2 more success story cards -->
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <div class="text-center mt-5 p-4 bg-light rounded">
+        <h3 class="mb-3">Ready to contribute?</h3>
+        <a href="/SustainableHub/SubmitPractice" class="btn btn-success btn-lg px-4 me-3">
+            <i class="fas fa-plus-circle me-2"></i>Share Your Practice
+        </a>
+        <a href="/Forum" class="btn btn-outline-success btn-lg px-4">
+            <i class="fas fa-comments me-2"></i>Join Discussion
+        </a>
+    </div>
+</div>
+
+<style>
+    /* Hero Section */
+    .sustainable-hero {
+        background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('/images/farm-field.jpg') center/cover;
+        border-radius: 8px;
+    }
+
+    /* Cards */
+    .card {
+        transition: all 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(46, 125, 50, 0.1);
+        }
+
+    /* List Items */
+    .list-group-item:hover {
+        background-color: rgba(46, 125, 50, 0.05);
+    }
+</style>

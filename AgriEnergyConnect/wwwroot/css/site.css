@@ -1,0 +1,23 @@
+/* Navbar tweaks */
+.navbar-brand {
+    font-weight: 600;
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 100, 0, 0.15);
+}
+
+/* Notification badge */
+.navbar .badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.6rem;
+    padding: 3px 5px;
+}
+
+/* Footer styling */
+footer {
+    font-size: 0.9rem;
+}

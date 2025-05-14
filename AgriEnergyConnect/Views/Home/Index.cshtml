@@ -1,0 +1,185 @@
+﻿@* Views/Home/Index.cshtml *@
+@{
+    Layout = "_Layout"; // Uses your shared layout
+}
+
+<!-- Hero Section (Unchanged) -->
+<section class="hero-section" style="background: linear-gradient(rgba(0, 100, 0, 0.8), rgba(0, 100, 0, 0.8)), url('/images/farm-hero.jpg')">
+    <div class="container text-center text-white py-5">
+        <h1 class="display-4">Agri-Energy Connect</h1>
+        <p class="lead">Bridging Sustainable Farming & Renewable Energy</p>
+        <div class="mt-4">
+            <a href="/SustainableHub" class="btn btn-light btn-lg mx-2">Explore Hub</a>
+            <a href="/Marketplace" class="btn btn-outline-light btn-lg mx-2">Visit Marketplace</a>
+        </div>
+    </div>
+</section>
+
+<!-- Role-Specific Dashboard Sections -->
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="container my-4">
+        @if (User.IsInRole("Farmer"))
+        {
+            <!-- Farmer Dashboard -->
+            <div class="card shadow-lg mb-5">
+                <div class="card-header bg-success text-white">
+                    <h3 class="my-2"><i class="fas fa-user-shield me-2"></i>Your Farmer Dashboard</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Add New Product</h4>
+                            <form class="mt-3">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Product Name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <select class="form-select">
+                                        <option>Vegetables</option>
+                                        <option>Fruits</option>
+                                        <option>Grains</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="date" class="form-control" required>
+                                </div>
+                                <button type="submit" class="btn btn-success">Add Product</button>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Your Recent Products</h4>
+                            <div class="list-group mt-3">
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <strong>Organic Tomatoes</strong> - Harvested: 2025-05-10
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <strong>Free-Range Eggs</strong> - Harvested: 2025-05-08
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (User.IsInRole("Employee"))
+        {
+            <!-- Employee Dashboard -->
+            <div class="card shadow-lg mb-5">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="my-2"><i class="fas fa-user-tie me-2"></i>Employee Portal</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addFarmerModal">
+                                    <i class="fas fa-user-plus me-2"></i>Register New Farmer
+                                </button>
+                                <a href="/Marketplace" class="btn btn-outline-primary">
+                                    <i class="fas fa-search me-2"></i>Browse All Products
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <h4>Quick Stats</h4>
+                            <div class="row text-center mt-3">
+                                <div class="col-md-4">
+                                    <div class="card bg-light p-3">
+                                        <h5>42</h5>
+                                        <small>Active Farmers</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-light p-3">
+                                        <h5>128</h5>
+                                        <small>Products Listed</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-light p-3">
+                                        <h5>24</h5>
+                                        <small>New This Week</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<!-- Key Features (PoE Alignment) - Unchanged -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-4 text-center p-4">
+            <i class="fas fa-seedling fa-3x text-success mb-3"></i>
+            <h3>Sustainable Hub</h3>
+            <p>Organic farming, water conservation, soil health</p>
+            <a href="/SustainableHub" class="btn btn-sm btn-outline-success">Learn More</a>
+        </div>
+        <div class="col-md-4 text-center p-4">
+            <i class="fas fa-solar-panel fa-3x text-success mb-3"></i>
+            <h3>Marketplace</h3>
+            <p>Solar pumps, wind turbines, biogas systems</p>
+            <a href="/Marketplace" class="btn btn-sm btn-outline-success">Browse Tech</a>
+        </div>
+        <div class="col-md-4 text-center p-4">
+            <i class="fas fa-graduation-cap fa-3x text-success mb-3"></i>
+            <h3>Training</h3>
+            <p>Webinars, workshops, courses</p>
+            <a href="/Training" class="btn btn-sm btn-outline-success">Upcoming Events</a>
+        </div>
+    </div>
+</div>
+
+<!-- Add Farmer Modal (For Employees) -->
+@if (User.IsInRole("Employee"))
+{
+    <div class="modal fade" id="addFarmerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Register New Farmer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contact Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Farm Location</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save Farmer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Styles {
+    <style>
+        .hero-section {
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+        }
+        /* Role-specific cards */
+        .card-header h3 i {
+            font-size: 1.2em;
+        }
+    </style>
+}

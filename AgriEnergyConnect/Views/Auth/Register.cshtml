@@ -1,0 +1,193 @@
+﻿@{
+    ViewData["Title"] = "Register";
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <h4><i class="fas fa-user-plus me-2"></i>Join Agri-Energy Connect</h4>
+                </div>
+                <div class="card-body p-4">
+                    <ul class="nav nav-tabs nav-justified mb-4" id="registerTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="farmer-tab" data-bs-toggle="tab" data-bs-target="#farmer-register" type="button" role="tab">
+                                <i class="fas fa-tractor me-2"></i>Farmer Registration
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="employee-tab" data-bs-toggle="tab" data-bs-target="#employee-register" type="button" role="tab">
+                                <i class="fas fa-user-tie me-2"></i>Employee Registration
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="farmer-register" role="tabpanel">
+                            <form asp-action="RegisterFarmer" method="post">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">First Name</label>
+                                        <input type="text" class="form-control" name="firstName" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" name="lastName" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Farm Name</label>
+                                    <input type="text" class="form-control" name="farmName" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email" required>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Password</label>
+                                        <input type="password" class="form-control" name="password" id="farmerPassword" required>
+                                        <div class="form-text">Minimum 8 characters</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" name="confirmPassword" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Location</label>
+                                    <select class="form-select" name="location" required>
+                                        <option value="">Select your region</option>
+                                        <option>Eastern Cape</option>
+                                        <option>Free State</option>
+                                        <option>Gauteng</option>
+                                        <option>KwaZulu-Natal</option>
+                                        <option>Limpopo</option>
+                                        <option>Mpumalanga</option>
+                                        <option>North West</option>
+                                        <option>Northern Cape</option>
+                                        <option>Western Cape</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="farmerTerms" required>
+                                    <label class="form-check-label" for="farmerTerms">I agree to the <a href="#">Terms of Service</a></label>
+                                </div>
+
+                                <button type="submit" class="btn btn-success w-100 py-2">
+                                    <i class="fas fa-user-plus me-2"></i>Register as Farmer
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane fade" id="employee-register" role="tabpanel">
+                            <form asp-action="RegisterEmployee" method="post">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">First Name</label>
+                                        <input type="text" class="form-control" name="firstName" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" name="lastName" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Employee ID</label>
+                                    <input type="text" class="form-control" name="employeeId" required>
+                                    <div class="form-text">Provided by your administrator</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email" required>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Password</label>
+                                        <input type="password" class="form-control" name="password" id="employeePassword" required>
+                                        <div class="form-text">Minimum 12 characters</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" name="confirmPassword" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Department</label>
+                                    <select class="form-select" name="department" required>
+                                        <option value="">Select department</option>
+                                        <option>Technical Support</option>
+                                        <option>Farmer Relations</option>
+                                        <option>Energy Solutions</option>
+                                        <option>Administration</option>
+                                        <option>Management</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="employeeTerms" required>
+                                    <label class="form-check-label" for="employeeTerms">I agree to the <a href="#">Employee Terms</a></label>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary w-100 py-2">
+                                    <i class="fas fa-user-plus me-2"></i>Register as Employee
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <small>Already have an account? <a asp-controller="Auth" asp-action="Login">Login here</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Password strength indicator for farmers
+        document.getElementById('farmerPassword').addEventListener('input', function() {
+            // Add password strength logic here
+        });
+
+        // Password strength indicator for employees
+        document.getElementById('employeePassword').addEventListener('input', function() {
+            // Add password strength logic here
+        });
+    </script>
+}
+
+@section Styles {
+    <style>
+        .nav-tabs .nav-link {
+            color: #495057;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+            .nav-tabs .nav-link.active {
+                color: #0d6efd;
+                border-bottom: 3px solid #0d6efd;
+            }
+
+        .tab-content {
+            padding-top: 1rem;
+        }
+
+        .form-text {
+            font-size: 0.8rem;
+        }
+    </style>
+}

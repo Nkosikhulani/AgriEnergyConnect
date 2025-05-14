@@ -1,0 +1,175 @@
+﻿@* Views/Education/Index.cshtml *@
+@{
+    ViewData["Title"] = "Training Resources";
+}
+
+<div class="container py-5">
+    <!-- Header Section -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 text-success mb-3">
+            <i class="fas fa-graduation-cap me-2"></i>@ViewData["Title"]
+        </h1>
+        <p class="lead">Enhance your skills with our green energy courses and workshops</p>
+    </div>
+
+    <!-- Upcoming Events Section -->
+    <div class="mb-5">
+        <h2 class="text-success mb-4 border-bottom pb-2">
+            <i class="fas fa-calendar-check me-2"></i>Upcoming Events
+        </h2>
+
+        <div class="row g-4">
+            <!-- Event 1 -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Solar Irrigation Workshop</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><i class="fas fa-calendar-alt text-success me-2"></i><strong>Date:</strong> June 15, 2024</p>
+                        <p><i class="fas fa-clock text-success me-2"></i><strong>Time:</strong> 10:00 AM - 12:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt text-success me-2"></i><strong>Location:</strong> Online (Zoom)</p>
+                        <hr>
+                        <p>Learn how to implement solar-powered irrigation systems on your farm.</p>
+                        <button class="btn btn-outline-success w-100">Register Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Wind Energy Basics</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><i class="fas fa-calendar-alt text-success me-2"></i><strong>Date:</strong> June 22, 2024</p>
+                        <p><i class="fas fa-clock text-success me-2"></i><strong>Time:</strong> 2:00 PM - 4:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt text-success me-2"></i><strong>Location:</strong> Cape Town</p>
+                        <hr>
+                        <p>Introduction to small-scale wind turbines for agricultural use.</p>
+                        <button class="btn btn-outline-success w-100">Register Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Biogas Production</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><i class="fas fa-calendar-alt text-success me-2"></i><strong>Date:</strong> July 5, 2024</p>
+                        <p><i class="fas fa-clock text-success me-2"></i><strong>Time:</strong> 9:00 AM - 1:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt text-success me-2"></i><strong>Location:</strong> Johannesburg</p>
+                        <hr>
+                        <p>Turn farm waste into renewable energy with biogas systems.</p>
+                        <button class="btn btn-outline-success w-100">Register Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Catalog Section -->
+    <div class="mb-5">
+        <h2 class="text-success mb-4 border-bottom pb-2">
+            <i class="fas fa-book-open me-2"></i>Available Courses
+        </h2>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="table-success">
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Duration</th>
+                        <th>Format</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong>Introduction to Solar Power</strong>
+                            <p class="mb-0 text-muted">Basic photovoltaic systems for farms</p>
+                        </td>
+                        <td>4 weeks</td>
+                        <td>Online</td>
+                        <td>R 1,500</td>
+                        <td><button class="btn btn-sm btn-outline-success">Enroll</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Advanced Water Conservation</strong>
+                            <p class="mb-0 text-muted">Efficient irrigation techniques</p>
+                        </td>
+                        <td>2 days</td>
+                        <td>In-person</td>
+                        <td>R 800</td>
+                        <td><button class="btn btn-sm btn-outline-success">Enroll</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Organic Farming Certification</strong>
+                            <p class="mb-0 text-muted">Transition to organic practices</p>
+                        </td>
+                        <td>6 weeks</td>
+                        <td>Hybrid</td>
+                        <td>R 2,200</td>
+                        <td><button class="btn btn-sm btn-outline-success">Enroll</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Resources Section -->
+    <div>
+        <h2 class="text-success mb-4 border-bottom pb-2">
+            <i class="fas fa-download me-2"></i>Free Resources
+        </h2>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-file-pdf fa-3x text-success mb-3"></i>
+                        <h5>Solar Installation Guide</h5>
+                        <p class="text-muted">Step-by-step manual for solar panel setup</p>
+                        <button class="btn btn-outline-success">
+                            <i class="fas fa-download me-2"></i>Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-video fa-3x text-success mb-3"></i>
+                        <h5>Webinar Recordings</h5>
+                        <p class="text-muted">Past sessions on renewable energy</p>
+                        <button class="btn btn-outline-success">
+                            <i class="fas fa-play-circle me-2"></i>Watch Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calculator fa-3x text-success mb-3"></i>
+                        <h5>Energy Savings Calculator</h5>
+                        <p class="text-muted">Estimate your potential savings</p>
+                        <button class="btn btn-outline-success">
+                            <i class="fas fa-external-link-alt me-2"></i>Access Tool
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,172 @@
+﻿@{
+    
+    ViewData["Title"] = "Collaboration Hub";
+}
+
+
+<!-- Hero Section -->
+<section class="collaboration-hero text-center py-5 mb-5">
+    <div class="container">
+        <h1 class="display-4 text-primary mb-3">
+            <i class="fas fa-users me-2"></i>@ViewData["Title"]
+        </h1>
+        <p class="lead">Connect with farmers, researchers, and sustainability experts</p>
+    </div>
+</section>
+
+<!-- Collaboration Features Section -->
+<div class="container py-3">
+    <div class="row g-4 mb-5">
+
+        <!-- Project Matchmaking Card -->
+        <div class="col-md-4">
+            <div class="card h-100 border-primary shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-handshake fa-3x text-primary mb-3"></i>
+                    <h3>Project Matchmaking</h3>
+                    <p>Find partners for your sustainable agriculture initiatives</p>
+                    <a href="#" class="btn btn-outline-primary mt-2">Browse Projects</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expert Directory Card -->
+        <div class="col-md-4">
+            <div class="card h-100 border-success shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-tie fa-3x text-success mb-3"></i>
+                    <h3>Expert Directory</h3>
+                    <p>Connect with agronomists and renewable energy specialists</p>
+                    <a href="#" class="btn btn-outline-success mt-2">View Directory</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Funding Opportunities Card -->
+        <div class="col-md-4">
+            <div class="card h-100 border-warning shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-piggy-bank fa-3x text-warning mb-3"></i>
+                    <h3>Funding Hub</h3>
+                    <p>Discover grants and investment opportunities</p>
+                    <a href="#" class="btn btn-outline-warning mt-2">Explore Funding</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Active Projects Section -->
+    <section class="mb-5">
+        <h2 class="text-center mb-4 border-bottom pb-2 text-primary">
+            <i class="fas fa-project-diagram me-2"></i>Active Community Projects
+        </h2>
+
+        <div class="row g-4">
+
+            <!-- Project 1: Solar-Powered Irrigation -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h4><i class="fas fa-solar-panel me-2"></i>Solar-Powered Irrigation</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>Collaborative project to reduce water and energy costs</p>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" style="width: 75%">75% funded</div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted">12 participants</span>
+                            <a href="#" class="btn btn-sm btn-primary">Join Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Organic Waste to Biogas -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header bg-success text-white">
+                        <h4><i class="fas fa-recycle me-2"></i>Organic Waste to Biogas</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>Converting farm waste into renewable energy</p>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-warning" style="width: 40%">40% funded</div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted">8 participants</span>
+                            <a href="#" class="btn btn-sm btn-success">Join Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Collaboration Form Section -->
+    <section class="mb-5 p-4 bg-light rounded">
+        <h3 class="text-center mb-4">
+            <i class="fas fa-paper-plane me-2 text-primary"></i>Start Collaborating
+        </h3>
+
+        <form>
+            <div class="row g-3">
+
+                <!-- Name Input -->
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+
+                <!-- Email Input -->
+                <div class="col-md-6">
+                    <input type="email" class="form-control" placeholder="Email" required>
+                </div>
+
+                <!-- Collaboration Purpose Dropdown -->
+                <div class="col-12">
+                    <select class="form-select" required>
+                        <option value="" disabled selected>I want to...</option>
+                        <option>Start a new project</option>
+                        <option>Join an existing project</option>
+                        <option>Offer expertise</option>
+                        <option>Provide funding</option>
+                    </select>
+                </div>
+
+                <!-- Description Textarea -->
+                <div class="col-12">
+                    <textarea class="form-control" rows="3" placeholder="Describe your collaboration idea..."></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-primary px-4">
+                        <i class="fas fa-paper-plane me-2"></i>Submit Request
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </section>
+</div>
+
+<!-- Page-Specific Styling -->
+<style>
+    .collaboration-hero {
+        background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.8)), url('/images/collaboration-hero.jpg') center/cover;
+    }
+
+    .card {
+        transition: all 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+    .progress {
+        height: 8px;
+    }
+</style>

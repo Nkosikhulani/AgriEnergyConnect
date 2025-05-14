@@ -1,0 +1,105 @@
+﻿@* Views/Education/Index.cshtml *@
+@{
+    ViewData["Title"] = "Training";
+}
+
+<div class="container py-5">
+    <!-- Header Section -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 text-success mb-3">
+            <i class="fas fa-graduation-cap me-2"></i>@ViewData["Title"]
+        </h1>
+        <p class="lead">
+            <i class="fas fa-video me-2"></i>Webinars,
+            <i class="fas fa-users me-2"></i>workshops,
+            <i class="fas fa-book me-2"></i>courses
+        </p>
+    </div>
+
+    <!-- Upcoming Events Section -->
+    <div class="mb-5">
+        <h2 class="text-success mb-4 border-bottom pb-2">
+            <i class="fas fa-calendar-alt me-2"></i>Upcoming Events
+        </h2>
+
+        <div class="row g-4">
+            <!-- Webinar Card -->
+            <div class="col-md-4">
+                <div class="card h-100 border-success shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-video me-2"></i>Solar Irrigation Webinar
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p><i class="fas fa-calendar-day text-success me-2"></i>June 15, 2024 | 10:00 AM</p>
+                        <p><i class="fas fa-clock text-success me-2"></i>90 minutes</p>
+                        <hr>
+                        <p>Learn to integrate solar pumps into existing irrigation systems.</p>
+                        <button class="btn btn-outline-success w-100">Join Webinar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workshop Card -->
+            <div class="col-md-4">
+                <div class="card h-100 border-success shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-users me-2"></i>Biogas Workshop
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p><i class="fas fa-calendar-day text-success me-2"></i>June 22, 2024 | 9:00 AM</p>
+                        <p><i class="fas fa-clock text-success me-2"></i>Half-day</p>
+                        <hr>
+                        <p>Hands-on training for small-scale biogas production.</p>
+                        <button class="btn btn-outline-success w-100">Register</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card -->
+            <div class="col-md-4">
+                <div class="card h-100 border-success shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-book me-2"></i>Renewable Energy Course
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p><i class="fas fa-calendar-day text-success me-2"></i>Starts July 1, 2024</p>
+                        <p><i class="fas fa-clock text-success me-2"></i>4-week program</p>
+                        <hr>
+                        <p>Comprehensive training on solar, wind, and biogas solutions.</p>
+                        <button class="btn btn-outline-success w-100">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Sections (Optional) -->
+    <div class="row mt-4">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-chalkboard-teacher fa-3x text-success mb-3"></i>
+                    <h4>Course Catalog</h4>
+                    <p>Browse all available training programs</p>
+                    <button class="btn btn-success">View Catalog</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-file-download fa-3x text-success mb-3"></i>
+                    <h4>Resources</h4>
+                    <p>Download guides and tools</p>
+                    <button class="btn btn-success">Access Resources</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
