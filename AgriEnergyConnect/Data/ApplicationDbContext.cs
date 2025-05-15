@@ -13,6 +13,7 @@ namespace AgriEnergyConnect.Data // Updated namespace
         public DbSet<Product> Products { get; set; }
         public DbSet<ForumPost> ForumPosts { get; set; }
         public DbSet<TrainingCourse> TrainingCourses { get; set; }
+        public DbSet<Farmer> Farmers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

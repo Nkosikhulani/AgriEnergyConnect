@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Product Index";
+}
+
+<h2>Product List</h2>
+
+<a class="btn btn-primary" href="@Url.Action("Add", "Product")">Add Product</a>
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>UserId</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.UserId</td>
+            </tr>
+        }
+    </tbody>
+</table>
