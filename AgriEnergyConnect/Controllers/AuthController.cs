@@ -98,7 +98,11 @@ namespace AgriEnergyConnect.Controllers
                     Email = model.Email,
                     Role = model.Role,
                     FarmName = model.FarmName,
-                    Department = model.Department
+                    Department = model.Department,
+                    FirstName = model.FirstName,  // Include FirstName
+                    LastName = model.LastName,    // Include LastName
+                    Location = model.Location,      // Include Location
+                    EmployeeId = model.EmployeeId   // Include EmployeeId
                 };
 
                 // Attempts to create the user in the Identity system

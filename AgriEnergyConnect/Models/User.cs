@@ -11,9 +11,15 @@ namespace AgriEnergyConnect.Models
             ForumPosts = new HashSet<ForumPost>();
         }
 
-        public string? Role { get; set; } // Add this property
-        public string? FarmName { get; set; } // Add this property
-        public string? Department { get; set; } // Add this property
+        public string? Role { get; set; }
+        public string? FarmName { get; set; }
+        public string? Department { get; set; }
+
+        // Add these new properties
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? Location { get; set; }
+        public string? EmployeeId { get; set; }
 
         public ICollection<Product> Products { get; set; }
         public ICollection<ForumPost> ForumPosts { get; set; }

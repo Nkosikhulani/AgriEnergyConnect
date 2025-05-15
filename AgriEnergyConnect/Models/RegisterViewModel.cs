@@ -17,11 +17,19 @@ namespace AgriEnergyConnect.ViewModels
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        public string? Role { get; set; }
+        // Farmer-specific fields
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string FarmName { get; set; }
+        public string Location { get; set; }
+        public bool FarmerTerms { get; set; } // For the checkbox
 
-        [Display(Name = "Farm Name")]
-        public string? FarmName { get; set; }
+        // Employee-specific fields
+        public string EmployeeId { get; set; }
+        public string Department { get; set; }
+        public bool EmployeeTerms { get; set; } // For the checkbox
 
-        public string? Department { get; set; }
+        // You might still need a general "Role" property if you're assigning roles upon registration
+        public string Role { get; set; }
     }
 }
