@@ -1,4 +1,6 @@
-﻿@{
+﻿@model AgriEnergyConnect.ViewModels.RegisterViewModel
+
+@{
     ViewData["Title"] = "Register";
     Layout = "_Layout";
 }
@@ -25,44 +27,56 @@
                     </ul>
 
                     <div class="tab-content">
+                        @* Farmer Registration Form *@
                         <div class="tab-pane fade show active" id="farmer-register" role="tabpanel">
-                            <form asp-action="RegisterFarmer" method="post">
+                            <form asp-action="Register" method="post">
+                                @Html.AntiForgeryToken() @* Ensures the Anti-Forgery Token is included *@
+                                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div> @* Shows only model-level errors *@
+
+                                <input type="hidden" asp-for="Role" value="Farmer" /> @* Sets the Role for farmer registration *@
+
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label">First Name</label>
-                                        <input type="text" class="form-control" name="firstName" required>
+                                        <label asp-for="FirstName" class="form-label"></label>
+                                        <input asp-for="FirstName" class="form-control" />
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" name="lastName" required>
+                                        <label asp-for="LastName" class="form-label"></label>
+                                        <input asp-for="LastName" class="form-control" />
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Farm Name</label>
-                                    <input type="text" class="form-control" name="farmName" required>
+                                    <label asp-for="FarmName" class="form-label"></label>
+                                    <input asp-for="FarmName" class="form-control" />
+                                    <span asp-validation-for="FarmName" class="text-danger"></span>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Email</label>
-                                    <input type="email" class="form-control" name="email" required>
+                                    <label asp-for="Email" class="form-label"></label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label">Password</label>
-                                        <input type="password" class="form-control" name="password" id="farmerPassword" required>
+                                        <label asp-for="Password" class="form-label"></label>
+                                        <input asp-for="Password" class="form-control" id="farmerPassword" />
                                         <div class="form-text">Minimum 8 characters</div>
+                                        <span asp-validation-for="Password" class="text-danger"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label">Confirm Password</label>
-                                        <input type="password" class="form-control" name="confirmPassword" required>
+                                        <label asp-for="ConfirmPassword" class="form-label"></label>
+                                        <input asp-for="ConfirmPassword" class="form-control" />
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Location</label>
-                                    <select class="form-select" name="location" required>
+                                    <label asp-for="Location" class="form-label"></label>
+                                    <select asp-for="Location" class="form-select">
                                         <option value="">Select your region</option>
                                         <option>Eastern Cape</option>
                                         <option>Free State</option>
@@ -74,11 +88,13 @@
                                         <option>Northern Cape</option>
                                         <option>Western Cape</option>
                                     </select>
+                                    <span asp-validation-for="Location" class="text-danger"></span>
                                 </div>
 
                                 <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="farmerTerms" required>
-                                    <label class="form-check-label" for="farmerTerms">I agree to the <a href="#">Terms of Service</a></label>
+                                    <input asp-for="FarmerTerms" class="form-check-input" />
+                                    <label class="form-check-label" asp-for="FarmerTerms">I agree to the <a href="#">Terms of Service</a></label>
+                                    <span asp-validation-for="FarmerTerms" class="text-danger d-block"></span> @* d-block for better display if error *@
                                 </div>
 
                                 <button type="submit" class="btn btn-success w-100 py-2">
@@ -87,45 +103,58 @@
                             </form>
                         </div>
 
+                        @* Employee Registration Form *@
                         <div class="tab-pane fade" id="employee-register" role="tabpanel">
-                            <form asp-action="RegisterEmployee" method="post">
+                            <form asp-action="Register" method="post">
+                                @* Point to the same Register action *@
+                                @Html.AntiForgeryToken()
+                                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                                <input type="hidden" asp-for="Role" value="Employee" /> @* Sets the Role for employee registration *@
+
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label">First Name</label>
-                                        <input type="text" class="form-control" name="firstName" required>
+                                        <label asp-for="FirstName" class="form-label"></label>
+                                        <input asp-for="FirstName" class="form-control" />
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" name="lastName" required>
+                                        <label asp-for="LastName" class="form-label"></label>
+                                        <input asp-for="LastName" class="form-control" />
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Employee ID</label>
-                                    <input type="text" class="form-control" name="employeeId" required>
+                                    <label asp-for="EmployeeId" class="form-label"></label>
+                                    <input asp-for="EmployeeId" class="form-control" />
                                     <div class="form-text">Provided by your administrator</div>
+                                    <span asp-validation-for="EmployeeId" class="text-danger"></span>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Email</label>
-                                    <input type="email" class="form-control" name="email" required>
+                                    <label asp-for="Email" class="form-label"></label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label">Password</label>
-                                        <input type="password" class="form-control" name="password" id="employeePassword" required>
+                                        <label asp-for="Password" class="form-label"></label>
+                                        <input asp-for="Password" class="form-control" id="employeePassword" />
                                         <div class="form-text">Minimum 12 characters</div>
+                                        <span asp-validation-for="Password" class="text-danger"></span>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label">Confirm Password</label>
-                                        <input type="password" class="form-control" name="confirmPassword" required>
+                                        <label asp-for="ConfirmPassword" class="form-label"></label>
+                                        <input asp-for="ConfirmPassword" class="form-control" />
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Department</label>
-                                    <select class="form-select" name="department" required>
+                                    <label asp-for="Department" class="form-label"></label>
+                                    <select asp-for="Department" class="form-select">
                                         <option value="">Select department</option>
                                         <option>Technical Support</option>
                                         <option>Farmer Relations</option>
@@ -133,11 +162,13 @@
                                         <option>Administration</option>
                                         <option>Management</option>
                                     </select>
+                                    <span asp-validation-for="Department" class="text-danger"></span>
                                 </div>
 
                                 <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="employeeTerms" required>
-                                    <label class="form-check-label" for="employeeTerms">I agree to the <a href="#">Employee Terms</a></label>
+                                    <input asp-for="EmployeeTerms" class="form-check-input" />
+                                    <label class="form-check-label" asp-for="EmployeeTerms">I agree to the <a href="#">Employee Terms</a></label>
+                                    <span asp-validation-for="EmployeeTerms" class="text-danger d-block"></span> @* d-block for better display if error *@
                                 </div>
 
                                 <button type="submit" class="btn btn-primary w-100 py-2">
@@ -156,6 +187,8 @@
 </div>
 
 @section Scripts {
+    <partial name="_ValidationScriptsPartial" /> @* Essential for client-side validation *@
+
     <script>
         // Password strength indicator for farmers
         document.getElementById('farmerPassword').addEventListener('input', function() {

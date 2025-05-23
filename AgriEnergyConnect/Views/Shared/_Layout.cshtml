@@ -5,23 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AgriEnergyConnect</title>
 
-    <!-- Bootstrap + Font Awesome -->
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
 
-    <!-- Custom CSS -->
     <link href="~/css/site.css" rel="stylesheet" />
 
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container">
             <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                 <i class="fas fa-leaf me-2"></i>Agri-Energy Connect
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -42,37 +39,47 @@
                             <i class="fas fa-graduation-cap me-1"></i> Training
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="Product" asp-action="Add">Add Product</a>
-                    </li>
                 </ul>
 
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Auth" asp-action="Login">
-                            <i class="fas fa-sign-in-alt me-1"></i> Login
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Auth" asp-action="Register">
-                            <i class="fas fa-user-plus me-1"></i> Register
-                        </a>
-                    </li>
-                </ul>
-
-
-                <ul class="navbar-nav">
-                    @if (User.Identity.IsAuthenticated)
+                    @if (!User.Identity.IsAuthenticated)
                     {
-                        <!-- Role-Specific Links -->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Auth" asp-action="Login">
+                                <i class="fas fa-sign-in-alt me-1"></i> Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Auth" asp-action="Register">
+                                <i class="fas fa-user-plus me-1"></i> Register
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Profile" asp-action="Index">
+                                <i class="fas fa-user-circle me-1"></i> My Profile
+                            </a>
+                        </li>
+
+                        @* Farmer-specific links *@
                         @if (User.IsInRole("Farmer"))
                         {
                             <li class="nav-item">
+                                <a class="nav-link" asp-controller="Product" asp-action="Add">
+                                    <i class="fas fa-plus-circle me-1"></i> Add Product
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" asp-controller="Products" asp-action="Index">
+                                    @* Assuming 'Products' controller for listing own products *@
                                     <i class="fas fa-apple-alt me-1"></i> My Products
                                 </a>
                             </li>
                         }
+
+                        @* Employee-specific links *@
                         @if (User.IsInRole("Employee"))
                         {
                             <li class="nav-item">
@@ -82,24 +89,26 @@
                             </li>
                         }
 
-                        <!-- Notification Bell -->
+                        @* Notification Bell (visible for all authenticated users) *@
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="notificationsDropdown" role="button" data-bs-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="notificationsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-bell"></i>
-                                <span class="badge bg-danger">3</span>
+                                <span class="badge bg-danger">3</span> @* Example badge, you'd dynamically set this *@
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown">
                                 <li><a class="dropdown-item" href="#">New message</a></li>
                                 <li><a class="dropdown-item" href="#">System update</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">View All Notifications</a></li>
                             </ul>
                         </li>
 
-                        <!-- User Dropdown -->
+                        @* User Dropdown for Profile and Logout *@
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
-                                <i class="fas fa-user-circle me-1"></i> @User.Identity.Name
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-1"></i> Hello @User.Identity.Name! @* Added "Hello" *@
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                 <li>
                                     <a class="dropdown-item" asp-controller="Profile" asp-action="Index">
                                         <i class="fas fa-user me-2"></i> Profile
@@ -107,9 +116,13 @@
                                 </li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
-                                    <a class="dropdown-item" asp-controller="Account" asp-action="Logout">
-                                        <i class="fas fa-sign-out-alt me-2"></i> Logout
-                                    </a>
+                                    @* Logout is a POST request for security *@
+                                    <form asp-controller="Auth" asp-action="Logout" method="post" id="logoutForm">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="fas fa-sign-out-alt me-2"></i> Logout
+                                        </button>
+                                    </form>
                                 </li>
                             </ul>
                         </li>
@@ -119,12 +132,10 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
 
-    <!-- Footer -->
     <footer class="border-top footer text-muted bg-light">
         <div class="container py-3">
             <div class="row">
@@ -139,7 +150,6 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)

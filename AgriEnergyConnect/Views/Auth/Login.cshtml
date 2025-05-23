@@ -1,4 +1,6 @@
-﻿@{
+﻿@model AgriEnergyConnect.ViewModels.LoginViewModel
+
+@{
     ViewData["Title"] = "Login";
     Layout = "_Layout";
 }
@@ -25,44 +27,56 @@
                     </ul>
 
                     <div class="tab-content">
+                        @* Farmer Login Tab Content *@
                         <div class="tab-pane fade show active" id="farmer-login" role="tabpanel">
-                            <form asp-action="FarmerLogin" method="post">
+                            <form asp-controller="Auth" asp-action="Login" method="post">
+                                @Html.AntiForgeryToken() @* Important for security *@
+                                <div asp-validation-summary="All" class="text-danger"></div> @* Display all validation errors *@
+
                                 <div class="mb-3">
-                                    <label class="form-label">Farmer ID/Email</label>
-                                    <input type="text" class="form-control" name="email" placeholder="farmers@agrienergyconnect.com" required>
+                                    <label asp-for="Email" class="form-label">Email</label> @* Changed label to asp-for for consistency *@
+                                    <input asp-for="Email" type="email" class="form-control" placeholder="farmers@agrienergyconnect.com" required> @* Used asp-for and type="email" *@
+                                    <span asp-validation-for="Email" class="text-danger"></span> @* For specific field validation messages *@
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Password</label>
-                                    <input type="password" class="form-control" name="password" required>
+                                    <label asp-for="Password" class="form-label">Password</label> @* Changed label to asp-for for consistency *@
+                                    <input asp-for="Password" type="password" class="form-control" required> @* Used asp-for and type="password" *@
+                                    <span asp-validation-for="Password" class="text-danger"></span> @* For specific field validation messages *@
                                 </div>
                                 <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="rememberFarmer">
-                                    <label class="form-check-label" for="rememberFarmer">Remember me</label>
+                                    <input asp-for="RememberMe" class="form-check-input"> @* Used asp-for for RememberMe *@
+                                    <label asp-for="RememberMe" class="form-check-label">Remember me</label> @* Used asp-for for label *@
                                     <a href="#" class="float-end">Forgot password?</a>
                                 </div>
                                 <button type="submit" class="btn btn-success w-100 py-2">
-                                    <i class="fas fa-sign-in-alt me-2"></i>Login as Farmer
+                                    <i class="fas fa-sign-in-alt me-2"></i>Login
                                 </button>
                             </form>
                         </div>
 
+                        @* Employee Login Tab Content *@
                         <div class="tab-pane fade" id="employee-login" role="tabpanel">
-                            <form asp-action="EmployeeLogin" method="post">
+                            <form asp-controller="Auth" asp-action="Login" method="post">
+                                @Html.AntiForgeryToken() @* Important for security *@
+                                <div asp-validation-summary="All" class="text-danger"></div> @* Display all validation errors *@
+
                                 <div class="mb-3">
-                                    <label class="form-label">Employee ID/Email</label>
-                                    <input type="text" class="form-control" name="email" placeholder="employees@agrienergyconnect.com" required>
+                                    <label asp-for="Email" class="form-label">Email</label> @* Changed label to asp-for for consistency *@
+                                    <input asp-for="Email" type="email" class="form-control" placeholder="employees@agrienergyconnect.com" required> @* Used asp-for and type="email" *@
+                                    <span asp-validation-for="Email" class="text-danger"></span> @* For specific field validation messages *@
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Password</label>
-                                    <input type="password" class="form-control" name="password" required>
+                                    <label asp-for="Password" class="form-label">Password</label> @* Changed label to asp-for for consistency *@
+                                    <input asp-for="Password" type="password" class="form-control" required> @* Used asp-for and type="password" *@
+                                    <span asp-validation-for="Password" class="text-danger"></span> @* For specific field validation messages *@
                                 </div>
                                 <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="rememberEmployee">
-                                    <label class="form-check-label" for="rememberEmployee">Remember me</label>
+                                    <input asp-for="RememberMe" class="form-check-input"> @* Used asp-for for RememberMe *@
+                                    <label asp-for="RememberMe" class="form-check-label">Remember me</label> @* Used asp-for for label *@
                                     <a href="#" class="float-end">Forgot password?</a>
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100 py-2">
-                                    <i class="fas fa-sign-in-alt me-2"></i>Login as Employee
+                                    <i class="fas fa-sign-in-alt me-2"></i>Login
                                 </button>
                             </form>
                         </div>
@@ -76,6 +90,45 @@
     </div>
 </div>
 
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        // Optional: If you want to persist the active tab after a form submission failure
+        // This might need to be more sophisticated if you have different validation logic per role.
+        // For now, it will simply re-activate the last selected tab.
+        document.addEventListener('DOMContentLoaded', function () {
+            var triggerTabList = document.querySelectorAll('#loginTabs button')
+            triggerTabList.forEach(triggerEl => {
+                var tabTrigger = new bootstrap.Tab(triggerEl)
+
+                triggerEl.addEventListener('click', event => {
+                    event.preventDefault()
+                    tabTrigger.show()
+                    localStorage.setItem('lastActiveLoginTab', triggerEl.id); // Save active tab
+                })
+            })
+
+            // On page load, activate the last selected tab
+            var lastActiveTabId = localStorage.getItem('lastActiveLoginTab');
+            if (lastActiveTabId) {
+                var lastActiveTab = document.getElementById(lastActiveTabId);
+                if (lastActiveTab) {
+                    var tabTrigger = new bootstrap.Tab(lastActiveTab);
+                    tabTrigger.show();
+                }
+            } else {
+                 // Default to farmer-tab if no last active tab is found
+                 var farmerTab = document.getElementById('farmer-tab');
+                 if (farmerTab) {
+                     new bootstrap.Tab(farmerTab).show();
+                 }
+            }
+        });
+    </script>
+}
+
 @section Styles {
     <style>
         .nav-tabs .nav-link {
@@ -85,7 +138,7 @@
         }
 
             .nav-tabs .nav-link.active {
-                color: #198754;
+                color: #198754; /* Success green for active tab */
                 border-bottom: 3px solid #198754;
             }
 

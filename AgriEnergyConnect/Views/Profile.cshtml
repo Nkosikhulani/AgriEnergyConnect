@@ -1,0 +1,63 @@
+﻿@model AgriEnergyConnect.Models.User  @* Assuming your custom User model is the model for the profile page *@
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">My Profile</h4>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Email:</dt>
+                    <dd class="col-sm-8">@Model.Email</dd>
+
+                    <dt class="col-sm-4">Role:</dt>
+                    <dd class="col-sm-8">@Model.Role</dd>
+
+                    @if (!string.IsNullOrEmpty(Model.FirstName))
+                    {
+                        <dt class="col-sm-4">First Name:</dt>
+                        <dd class="col-sm-8">@Model.FirstName</dd>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.LastName))
+                    {
+                        <dt class="col-sm-4">Last Name:</dt>
+                        <dd class="col-sm-8">@Model.LastName</dd>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.FarmName))
+                    {
+                        <dt class="col-sm-4">Farm Name:</dt>
+                        <dd class="col-sm-8">@Model.FarmName</dd>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.Department))
+                    {
+                        <dt class="col-sm-4">Department:</dt>
+                        <dd class="col-sm-8">@Model.Department</dd>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.Location))
+                    {
+                        <dt class="col-sm-4">Location:</dt>
+                        <dd class="col-sm-8">@Model.Location</dd>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.EmployeeId))
+                    {
+                        <dt class="col-sm-4">Employee ID:</dt>
+                        <dd class="col-sm-8">@Model.EmployeeId</dd>
+                    }
+                </dl>
+            </div>
+            <div class="card-footer text-end">
+                <a asp-action="Edit" class="btn btn-primary">Edit Profile</a> @* Link to an Edit action if you implement one *@
+            </div>
+        </div>
+    </div>
+</div>
