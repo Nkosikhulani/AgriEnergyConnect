@@ -1,27 +1,56 @@
-﻿@{
-    ViewData["Title"] = "Product Index";
+﻿@model IEnumerable<AgriEnergyConnect.Models.Product>
+
+@{
+    ViewData["Title"] = "Your Products";
 }
 
-<h2>Product List</h2>
+<h1>Your Products</h1>
 
-<a class="btn btn-primary" href="@Url.Action("Add", "Product")">Add Product</a>
+<p>
+    <a asp-action="Add" class="btn btn-primary">Add New Product</a>
+</p>
 
-<table class="table table-striped mt-3">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>UserId</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var product in Model)
-        {
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@product.Id</td>
-                <td>@product.Name</td>
-                <td>@product.UserId</td>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                <th>@Html.DisplayNameFor(model => model.Price)</th>
+                <th>@Html.DisplayNameFor(model => model.ProductionDate)</th>
+                <th></th> @* For action links like Edit/Delete *@
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ProductionDate)</td>
+                    <td>
+                        @* These links will be functional once you implement Edit, Details, Delete actions in ProductController *@
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info" role="alert">
+        No products found. Click "Add New Product" to get started!
+    </div>
+}
+
+@section Scripts {
+    @{
+        // This is generally good practice to include, though might not be strictly needed for a simple list view
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

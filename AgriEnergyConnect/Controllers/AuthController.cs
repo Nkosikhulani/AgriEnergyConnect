@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
-using AgriEnergyConnect.Models;
+using AgriEnergyConnect.Models; // Assuming 'User' is in this namespace
 using AgriEnergyConnect.ViewModels;
 using AgriEnergyConnect.Data;
 
@@ -102,7 +102,7 @@ namespace AgriEnergyConnect.Controllers
                     FirstName = model.FirstName,  // Include FirstName
                     LastName = model.LastName,    // Include LastName
                     Location = model.Location,      // Include Location
-                    EmployeeId = model.EmployeeId   // Include EmployeeId
+                    EmployeeId = model.EmployeeId    // Include EmployeeId
                 };
 
                 // Attempts to create the user in the Identity system
