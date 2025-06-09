@@ -9,7 +9,7 @@ namespace AgriEnergyConnect.Controllers
     using Microsoft.EntityFrameworkCore;
     using System.Security.Claims;
 
-    [Authorize(Roles = "Employee")]
+    //[Authorize(Roles = "Employee")]
     public class FarmerController : Controller
     {
         private readonly ApplicationDbContext _context;

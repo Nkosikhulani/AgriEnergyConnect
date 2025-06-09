@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\lib\Images\" />
     <Folder Include="wwwroot\lib\font-awesome\" />
+    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
   <ItemGroup>
