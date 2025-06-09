@@ -1,38 +1,8 @@
-﻿@{
-    ViewData["Title"] = "Sustainable Farming Hub";
-}
-
-<!-- All content in one file initially -->
-<section class="hero">
-    <h1>@ViewData["Title"]</h1>
-</section>
-
-<div class="container">
-    <!-- Practice Cards -->
-    <div class="row">
-        <div class="col-md-4">
-            <!-- Card content directly here -->
-        </div>
-    </div>
-
-    <!-- Success Stories -->
-    <section class="success-stories">
-        <!-- Content here -->
-    </section>
-</div>
-
-<style>
-    /* CSS directly in the view initially */
-    .hero {
-        background: var(--success);
-    }
-</style>
-
+﻿@* Views/Home/Index.cshtml *@
 @{
     ViewData["Title"] = "Sustainable Farming Hub";
 }
 
-<!-- Hero Section -->
 <section class="sustainable-hero text-center py-5 mb-5">
     <div class="container">
         <h1 class="display-4 text-success mb-3">
@@ -50,10 +20,8 @@
     </div>
 </section>
 
-<!-- Core Practices Section -->
 <div class="container py-3">
     <div class="row g-4 mb-5">
-        <!-- Water Conservation -->
         <div class="col-md-4">
             <div class="card h-100 border-success shadow-sm">
                 <div class="card-body text-center">
@@ -70,7 +38,6 @@
             </div>
         </div>
 
-        <!-- Soil Health -->
         <div class="col-md-4">
             <div class="card h-100 border-success shadow-sm">
                 <div class="card-body text-center">
@@ -87,7 +54,6 @@
             </div>
         </div>
 
-        <!-- Organic Farming -->
         <div class="col-md-4">
             <div class="card h-100 border-success shadow-sm">
                 <div class="card-body text-center">
@@ -105,7 +71,6 @@
         </div>
     </div>
 
-    <!-- Farmer Best Practices -->
     <section class="mb-5">
         <h2 class="text-center mb-4 border-bottom pb-2">
             <i class="fas fa-hands-helping text-success me-2"></i>Farmer-Shared Best Practices
@@ -156,7 +121,6 @@
         </div>
     </section>
 
-    <!-- Success Stories -->
     <section class="mb-5">
         <h2 class="text-center mb-4 border-bottom pb-2">
             <i class="fas fa-star text-success me-2"></i>Success Stories
@@ -172,11 +136,9 @@
                     </div>
                 </div>
             </div>
-            <!-- Add 2 more success story cards -->
         </div>
     </section>
 
-    <!-- Final CTA -->
     <div class="text-center mt-5 p-4 bg-light rounded">
         <h3 class="mb-3">Ready to contribute?</h3>
         <a href="/SustainableHub/SubmitPractice" class="btn btn-success btn-lg px-4 me-3">
@@ -188,25 +150,47 @@
     </div>
 </div>
 
-<style>
-    /* Hero Section */
-    .sustainable-hero {
-        background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('/images/farm-field.jpg') center/cover;
-        border-radius: 8px;
-    }
-
-    /* Cards */
-    .card {
-        transition: all 0.3s ease;
-    }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(46, 125, 50, 0.1);
+@section Styles {
+    <style>
+        /* Apply the background image to the body with no gradient overlay */
+        body {
+            background: url('/images/Sustainable.jpg') center top / cover no-repeat fixed;
+            /* 'center top' centers horizontally, aligns to top vertically.
+                       'cover' scales to cover the whole body.
+                       'no-repeat' prevents tiling.
+                       'fixed' makes the background scroll with the page.
+                    */
         }
 
-    /* List Items */
-    .list-group-item:hover {
-        background-color: rgba(46, 125, 50, 0.05);
-    }
-</style>
+        /* Hero Section's background is transparent so the body background shows through */
+        .sustainable-hero {
+            background: transparent !important;
+            border-radius: 8px; /* Keep the border-radius if desired */
+        }
+
+        /* Ensure cards have a solid white background for maximum readability */
+        .card {
+            background-color: #fff; /* Solid white */
+            transition: all 0.3s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(46, 125, 50, 0.1);
+            }
+
+        /* List Items - ensure their background is transparent or matches the card */
+        .list-group-item {
+            background-color: transparent !important;
+        }
+
+            .list-group-item:hover {
+                background-color: rgba(46, 125, 50, 0.05) !important; /* Keep hover effect */
+            }
+
+        /* Adjust the final CTA section to have a solid light background */
+        .text-center.mt-5.p-4.bg-light.rounded {
+            background-color: #f8f9fa !important; /* Use Bootstrap's actual light color for consistency */
+        }
+    </style>
+}

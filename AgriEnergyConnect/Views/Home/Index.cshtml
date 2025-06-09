@@ -3,8 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";  // Uses your shared layout
 }
 
-<!-- Hero Section (Unchanged) -->
-<section class="hero-section" style="background: linear-gradient(rgba(0, 100, 0, 0.8), rgba(0, 100, 0, 0.8)), url('/images/farm-hero.jpg')">
+<section class="hero-section" style="background: linear-gradient(rgba(0, 100, 0, 0.5), rgba(0, 100, 0, 0.5)), url('/images/Home%20page.jpg')">
     <div class="container text-center text-white py-5">
         <h1 class="display-4">Agri-Energy Connect</h1>
         <p class="lead">Bridging Sustainable Farming & Renewable Energy</p>
@@ -15,13 +14,11 @@
     </div>
 </section>
 
-<!-- Role-Specific Dashboard Sections -->
 @if (User.Identity.IsAuthenticated)
 {
     <div class="container my-4">
         @if (User.IsInRole("Farmer"))
         {
-            <!-- Farmer Dashboard -->
             <div class="card shadow-lg mb-5">
                 <div class="card-header bg-success text-white">
                     <h3 class="my-2"><i class="fas fa-user-shield me-2"></i>Your Farmer Dashboard</h3>
@@ -64,7 +61,6 @@
         }
         else if (User.IsInRole("Employee"))
         {
-            <!-- Employee Dashboard -->
             <div class="card shadow-lg mb-5">
                 <div class="card-header bg-primary text-white">
                     <h3 class="my-2"><i class="fas fa-user-tie me-2"></i>Employee Portal</h3>
@@ -111,7 +107,6 @@
     </div>
 }
 
-<!-- Key Features (PoE Alignment) - Unchanged -->
 <div class="container my-5">
     <div class="row">
         <div class="col-md-4 text-center p-4">
@@ -135,7 +130,6 @@
     </div>
 </div>
 
-<!-- Add Farmer Modal (For Employees) -->
 @if (User.IsInRole("Employee"))
 {
     <div class="modal fade" id="addFarmerModal" tabindex="-1">

@@ -1,225 +1,124 @@
-﻿@{
-    ViewData["Title"] = "Green Energy Marketplace";
+﻿@* Views/Marketplace/Index.cshtml (Example file name) *@
+@{
+    ViewData["Title"] = "Marketplace";
 }
 
-<!-- Hero Section with Stats -->
-<section class="marketplace-hero text-center py-5 mb-4">
-    <div class="container">
-        <h1 class="display-4 text-white mb-3">
-            <i class="fas fa-solar-panel me-2"></i>@ViewData["Title"]
-        </h1>
-        <p class="lead text-white-50">Sustainable solutions for productive farming</p>
-
-        <div class="row mt-5 g-3 text-white">
-            <div class="col-md-3">
-                <div class="p-3 rounded" style="background: rgba(255,255,255,0.1);">
-                    <h3 class="mb-0">200+</h3>
-                    <small>Verified Products</small>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="p-3 rounded" style="background: rgba(255,255,255,0.1);">
-                    <h3 class="mb-0">85%</h3>
-                    <small>Farmers Saved Costs</small>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="p-3 rounded" style="background: rgba(255,255,255,0.1);">
-                    <h3 class="mb-0">4.8★</h3>
-                    <small>Average Rating</small>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="p-3 rounded" style="background: rgba(255,255,255,0.1);">
-                    <h3 class="mb-0">24h</h3>
-                    <small>Support Response</small>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Main Content -->
-<div class="container py-3">
-    <!-- Advanced Filters -->
-    <div class="row mb-4 g-3">
+<div class="container py-5">
+    <div class="row mb-4">
         <div class="col-md-3">
             <select class="form-select">
                 <option selected>All Categories</option>
-                <option>Solar Pumps</option>
-                <option>Wind Turbines</option>
-                <option>Biogas Systems</option>
-                <option>Solar Fencing</option>
-                <option>Monitoring Tools</option>
             </select>
         </div>
         <div class="col-md-3">
             <select class="form-select">
                 <option selected>Price Range</option>
-                <option>Under R10,000</option>
-                <option>R10,000 - R50,000</option>
-                <option>Over R50,000</option>
             </select>
         </div>
         <div class="col-md-3">
             <select class="form-select">
                 <option selected>Farm Size</option>
-                <option>Small (0-5ha)</option>
-                <option>Medium (5-20ha)</option>
-                <option>Large (20+ha)</option>
             </select>
         </div>
         <div class="col-md-3">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search products...">
-                <button class="btn btn-success" type="button">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
+            <input type="text" class="form-control" placeholder="Search products...">
         </div>
     </div>
 
-    <!-- Product Grid -->
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        <!-- Product 1 -->
-        <div class="col">
-            <div class="card h-100 border-0 shadow-sm hover-effect">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card product-card">
                 <div class="position-relative">
-                    <img src="~/images/solar-pump.jpg" class="card-img-top" alt="Solar Pump">
+                    <img src="~/images/solar pump.jpg" class="card-img-top" alt="Solar Pump" style="height: 200px; object-fit: cover;">
                     <span class="badge bg-success position-absolute top-0 start-0 m-2">BESTSELLER</span>
                     <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-2">-15%</span>
                 </div>
                 <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-start">
-                        <h5 class="card-title mb-1">Solar Pump 5000</h5>
-                        <div class="text-success text-nowrap">
-                            <span class="h5">R15,000</span>
-                            <small class="d-block text-muted text-decoration-line-through">R17,500</small>
-                        </div>
-                    </div>
-                    <div class="mb-2">
-                        <i class="fas fa-star text-warning"></i>
-                        <small class="text-muted">4.7 (128 reviews)</small>
-                    </div>
+                    <h5 class="card-title">Solar Pump 5000</h5>
+                    <p class="card-text text-success fw-bold">R15,000 <s class="text-muted small">R17,500</s></p>
+                    <p class="card-text"><small class="text-muted">4.7 (128 reviews)</small></p>
                     <p class="card-text">5HP solar-powered irrigation pump with 5-year warranty</p>
-                    <ul class="list-unstyled small text-muted">
-                        <li><i class="fas fa-check-circle text-success me-1"></i> 3.5kWh daily output</li>
-                        <li><i class="fas fa-check-circle text-success me-1"></i> Drought-resistant</li>
-                    </ul>
-                </div>
-                <div class="card-footer bg-white border-0">
+                    <p class="card-text">3.5kWh daily output<br>Drought-resistant</p>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-success">
-                            <i class="fas fa-shopping-cart me-2"></i>Add to Cart
-                        </button>
-                        <button class="btn btn-outline-success">
-                            <i class="fas fa-balance-scale me-2"></i>Compare
-                        </button>
+                        <button class="btn btn-success">Add to Cart</button>
+                        <button class="btn btn-outline-secondary">Compare</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Product 2 - Wind Turbine -->
-        <div class="col">
-            <div class="card h-100 border-0 shadow-sm hover-effect">
-                <img src="~/images/wind-turbine.jpg" class="card-img-top" alt="Wind Turbine">
+        <div class="col-md-4">
+            <div class="card product-card">
+                <div class="position-relative">
+                    <img src="~/images/Farm wind.jpg" class="card-img-top" alt="Wind Turbine" style="height: 200px; object-fit: cover;">
+                </div>
                 <div class="card-body">
                     <h5 class="card-title">FarmWind 2000</h5>
-                    <div class="text-success mb-2">
-                        <span class="h5">R45,000</span>
-                    </div>
-                    <div class="mb-2">
-                        <i class="fas fa-star text-warning"></i>
-                        <small class="text-muted">4.9 (64 reviews)</small>
-                    </div>
+                    <p class="card-text text-success fw-bold">R45,000</p>
+                    <p class="card-text"><small class="text-muted">4.9 (64 reviews)</small></p>
                     <p class="card-text">Vertical axis turbine for low-wind areas</p>
-                    <ul class="list-unstyled small text-muted">
-                        <li><i class="fas fa-check-circle text-success me-1"></i> 2kW output</li>
-                        <li><i class="fas fa-check-circle text-success me-1"></i> Silent operation</li>
-                    </ul>
-                </div>
-                <div class="card-footer bg-white border-0">
+                    <p class="card-text">2kW output<br>Silent operation</p>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-success">
-                            <i class="fas fa-shopping-cart me-2"></i>Add to Cart
-                        </button>
-                        <button class="btn btn-outline-success">
-                            <i class="fas fa-balance-scale me-2"></i>Compare
-                        </button>
+                        <button class="btn btn-success">Add to Cart</button>
+                        <button class="btn btn-outline-secondary">Compare</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Product 3 - Biogas System -->
-        <div class="col">
-            <div class="card h-100 border-0 shadow-sm hover-effect">
+        <div class="col-md-4">
+            <div class="card product-card">
                 <div class="position-relative">
-                    <img src="~/images/biogas-system.jpg" class="card-img-top" alt="Biogas System">
-                    <span class="badge bg-info position-absolute top-0 start-0 m-2">NEW</span>
+                    <img src="~/images/Biogas pro.jpg" class="card-img-top" alt="Biogas System" style="height: 200px; object-fit: cover;">
+                    <span class="badge bg-info position-absolute top-0 start-0 m-2">NEW SYSTEM</span>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">BioGas Pro</h5>
-                    <div class="text-success mb-2">
-                        <span class="h5">R32,000</span>
-                    </div>
-                    <div class="mb-2">
-                        <i class="fas fa-star text-warning"></i>
-                        <small class="text-muted">4.5 (42 reviews)</small>
-                    </div>
+                    <p class="card-text text-success fw-bold">R32,000</p>
+                    <p class="card-text"><small class="text-muted">4.5 (42 reviews)</small></p>
                     <p class="card-text">Convert waste to energy for medium farms</p>
-                    <ul class="list-unstyled small text-muted">
-                        <li><i class="fas fa-check-circle text-success me-1"></i> 4m³ daily gas</li>
-                        <li><i class="fas fa-check-circle text-success me-1"></i> Includes digester</li>
-                    </ul>
-                </div>
-                <div class="card-footer bg-white border-0">
+                    <p class="card-text">4m³ daily gas<br>Includes digester</p>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-success">
-                            <i class="fas fa-shopping-cart me-2"></i>Add to Cart
-                        </button>
-                        <button class="btn btn-outline-success">
-                            <i class="fas fa-balance-scale me-2"></i>Compare
-                        </button>
+                        <button class="btn btn-success">Add to Cart</button>
+                        <button class="btn btn-outline-secondary">Compare</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Vendor Section -->
-    <section class="mt-5 p-4 bg-light rounded">
-        <div class="row align-items-center">
-            <div class="col-md-8">
-                <h3><i class="fas fa-store-alt me-2 text-success"></i>Are you a supplier?</h3>
-                <p class="mb-0">Join our marketplace and reach thousands of farmers looking for sustainable solutions</p>
-            </div>
-            <div class="col-md-4 text-md-end mt-3 mt-md-0">
-                <a href="/vendor/signup" class="btn btn-outline-success px-4">
-                    <i class="fas fa-user-plus me-2"></i>Register as Vendor
-                </a>
-            </div>
-        </div>
-    </section>
 </div>
 
-<style>
-    .marketplace-hero {
-        background: linear-gradient(rgba(0,100,0,0.8), rgba(0,80,0,0.9)), url('/images/marketplace-bg.jpg') center/cover;
-    }
+@section Scripts {
+}
 
-    .hover-effect {
-        transition: all 0.3s ease;
-    }
-
-        .hover-effect:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+@section Styles {
+    <style>
+        /* Optional: Add some styling for the product cards if they don't look as expected */
+        .product-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            margin-bottom: 20px; /* Space between cards */
+            height: 100%; /* Ensure cards are same height in a row */
         }
 
-    .card-img-top {
-        height: 200px;
-        object-fit: cover;
-    }
-</style>
+            .product-card .card-body {
+                padding: 15px;
+            }
+
+            .product-card .card-title {
+                font-size: 1.25rem;
+                color: #28a745; /* Bootstrap success green */
+            }
+
+            .product-card .card-text.fw-bold {
+                font-size: 1.1rem;
+            }
+
+            .product-card .card-img-top {
+                width: 100%;
+                display: block; /* Ensures no extra space below image */
+            }
+    </style>
+}
