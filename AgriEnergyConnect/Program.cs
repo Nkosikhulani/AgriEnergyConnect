@@ -1,7 +1,9 @@
+// USING STATEMENTS MUST BE AT THE VERY TOP
 using Microsoft.EntityFrameworkCore;
-using AgriEnergyConnect.Data; // Ensure this is the correct namespace for ApplicationDbContext
+using AgriEnergyConnect.Data; // Ensure this is correct for ApplicationDbContext
 using Microsoft.AspNetCore.Identity;
-using AgriEnergyConnect.Models; // Add this if you have a custom User class
+using AgriEnergyConnect.Models; // Ensure this is correct for your custom User class
+using AgriEnergyConnect.Data.Seeds; // Add this using for the RoleSeeder
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,15 +17,10 @@ var connectionString = builder.Configuration.GetConnectionString("DevelopmentDB"
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-// 3.  If using Identity, configure Identity services
-builder.Services.AddIdentity<User, IdentityRole>() // If using a custom User class
+// 3. Configure Identity services with your custom User class and IdentityRole
+builder.Services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
-
-// If you're using the default IdentityUser, use this instead:
-// builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-//     .AddEntityFrameworkStores<ApplicationDbContext>()
-//     .AddDefaultTokenProviders();
 
 // Configure Identity options
 builder.Services.Configure<IdentityOptions>(options =>
@@ -41,9 +38,17 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Lockout.AllowedForNewUsers = true;
 
     // User settings
-    // options.User.RequireConfirmedEmail = false; // Commenting out this line
-    // options.User.RequireConfirmedPhoneNumber = false; // Already commented out
+    // options.User.RequireConfirmedEmail = false;
+    // options.User.RequireConfirmedPhoneNumber = false;
 });
+
+// Configure where unauthenticated/unauthorized users are redirected
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Identity/Account/Login"; // Default login path
+    options.AccessDeniedPath = "/Account/AccessDenied"; // Custom Access Denied path
+});
+
 
 var app = builder.Build();
 
@@ -61,6 +66,15 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// THIS IS THE ONLY PLACE RoleSeeder should be mentioned outside its own file.
+// It's a CALL to the seeder, NOT a definition of the seeder class.
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    // Pass IdentityRole to the seeder, as that's what we configured Identity to use for roles.
+    await RoleSeeder.SeedRolesAsync(roleManager);
+}
 
 app.MapControllerRoute(
     name: "default",

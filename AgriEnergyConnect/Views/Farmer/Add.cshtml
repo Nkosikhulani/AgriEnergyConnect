@@ -1,0 +1,61 @@
+﻿@model AgriEnergyConnect.Models.Farmer
+
+@{
+    ViewData["Title"] = "Add New Farmer";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>Add New Farmer</h1>
+        <hr />
+        <form asp-action="Add" asp-controller="Farmer" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @* Id is typically auto-generated and not needed as an input field for 'Add' *@
+            @* <input type="hidden" asp-for="Id" /> *@
+
+            <div class="form-group mb-3">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="control-label"></label>
+                <textarea asp-for="Email" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" type="date" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+
+            @* UserId is set in the controller from the logged-in user, so no input field needed here *@
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="Create Product" class="btn btn-primary w-100" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <a asp-action="Index" class="btn btn-secondary w-100">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

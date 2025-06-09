@@ -15,5 +15,8 @@ namespace AgriEnergyConnect.Models
         public string Location { get; set; }
 
         public DateTime DateJoined { get; set; } = DateTime.Now;
+
+        public string? UserId { get; set; } // Already made nullable
+        public User? User { get; set; } // Already made nullable (Navigation property)
     }
 }

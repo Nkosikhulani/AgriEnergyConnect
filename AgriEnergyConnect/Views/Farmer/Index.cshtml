@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AgriEnergyConnect.Models.Farmer>
+
+@{
+    ViewData["Title"] = "Your Farmers";
+}
+
+<h1>Your Farmers</h1>
+
+<p>
+    <a asp-action="Add" class="btn btn-primary">Add New Farmer</a>
+</p>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.FullName)</th>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                <th>@Html.DisplayNameFor(model => model.Location)</th>
+                <th>@Html.DisplayNameFor(model => model.DateJoined)</th>
+                <th></th> @* For action links like Edit/Delete *@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Location)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DateJoined)</td>
+                    <td>
+                        @* These links will be functional once you implement Edit, Details, Delete actions in ProductController *@
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info" role="alert">
+        No products found. Click "Add New Farmer" to get started!
+    </div>
+}
+
+@section Scripts {
+    @{
+        // This is generally good practice to include, though might not be strictly needed for a simple list view
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
